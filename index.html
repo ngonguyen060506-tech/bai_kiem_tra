@@ -1,0 +1,31 @@
+<form onsubmit="handleSubmit(event)">
+    Số đầu: <input type="number" id="startNum"><br>
+    Số cuối: <input type="number" id="endNum"><br>
+    <button type="submit">Tính tích</button>
+</form>
+<p id="result"></p>
+
+<script>
+function handleSubmit(event) {
+    event.preventDefault();
+    const start = parseInt(document.getElementById("startNum").value);
+    const end = parseInt(document.getElementById("endNum").value);
+    
+    let product = 1;
+    let count = 0;
+    
+    for (let i = start; i <= end; i++) {
+        if (i % 7 === 0 && i !== 0) {
+            product *= i;
+            count++;
+        }
+    }
+    
+    const resultElement = document.getElementById("result");
+    if (count > 0) {
+        resultElement.innerText = "Tích là: " + product;
+    } else {
+        resultElement.innerText = "Không có số nào chia hết cho 7.";
+    }
+}
+</script>
